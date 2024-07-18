@@ -25,15 +25,6 @@
       };
   in {
     overlayAttrs = {
-      mesa = final.callPackage ./panfork {
-        src = inputs.panfork.outPath;
-        prev = pkgs;
-      };
-      kodi-rock5b = final.callPackage ./kodi rec {
-        x11Support = false;
-        gbmSupport = true;
-        mesa = final.mesa;
-      };
       fan-control-rock5b = final.callPackage ./fan-control {
         src = "${inputs.fan-control.outPath}/src";
       };
@@ -45,8 +36,6 @@
     packages = builtins.mapAttrs (name: value: final.pkgsCross.aarch64-multiplatform.${value}) {
       fan-control = "fan-control-rock5b";
       linux-rock5b = "linux-rock5b";
-      panfork = "mesa";
-      kodi = "kodi-rock5b";
     } // {
       # not injecting these into nixpkgs
       rootfs = (buildConfig system self.nixosModules.firstBoot).config.system.build.rootfsImage;

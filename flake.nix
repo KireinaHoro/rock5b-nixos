@@ -12,10 +12,6 @@
       url = "github:radxa/kernel/a9583fb47e9b96c552f458a376207141602c0025";
       flake = false;
     };
-    panfork = {
-      url = "gitlab:panfork/mesa";
-      flake = false;
-    };
     tow-boot = {
       url = "github:aciceri/Tow-Boot/rock5b";
       flake = false;
